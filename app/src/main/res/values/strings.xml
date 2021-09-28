@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Rick&amp;Morty</string>
+    <string name="character_image_desc">Character photo</string>
+    <string name="item_characters_header_location_text">Last known location:</string>
+    <string name="item_characters_header_episode_text">First seen in:</string>
 </resources>

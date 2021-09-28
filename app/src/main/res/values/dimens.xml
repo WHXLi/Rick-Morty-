@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <dimen name="characters_item_layout_margin">20dp</dimen>
+    <dimen name="characters_item_height">250dp</dimen>
+    <dimen name="characters_item_text_margin_top">12dp</dimen>
+    <dimen name="characters_item_text_padding">20dp</dimen>
+    <dimen name="characters_item_title_text_size">22sp</dimen>
+    <dimen name="characters_item_status_text_size">14sp</dimen>
+    <dimen name="characters_item_header_text_size">16sp</dimen>
+    <dimen name="characters_item_body_text_size">18sp</dimen>
+
+    <dimen name="character_fragment_text_padding">20dp</dimen>
+    <dimen name="character_fragment_text_size">16sp</dimen>
+</resources>
