@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/characters_item_height"
+    android:layout_margin="@dimen/characters_item_layout_margin">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/item_characters_block"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/item_characters_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/item_characters_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/character_image_desc" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/item_characters_line"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <TextView
+                android:id="@+id/item_characters_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:textColor="@color/item_characters_text"
+                android:textSize="@dimen/characters_item_title_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/item_characters_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:textColor="@color/item_characters_text"
+                android:textSize="@dimen/characters_item_status_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_header_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_title" />
+
+            <TextView
+                android:id="@+id/item_characters_header_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:text="@string/item_characters_header_location_text"
+                android:textColor="@color/item_characters_header"
+                android:textSize="@dimen/characters_item_header_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_body_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_status" />
+
+            <TextView
+                android:id="@+id/item_characters_body_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:textColor="@color/item_characters_text"
+                android:textSize="@dimen/characters_item_body_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_header_origin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_location" />
+
+            <TextView
+                android:id="@+id/item_characters_header_origin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:text="@string/item_characters_header_episode_text"
+                android:textColor="@color/item_characters_header"
+                android:textSize="@dimen/characters_item_header_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_body_origin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_body_location" />
+
+            <TextView
+                android:id="@+id/item_characters_body_origin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:textColor="@color/item_characters_text"
+                android:textSize="@dimen/characters_item_body_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_origin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

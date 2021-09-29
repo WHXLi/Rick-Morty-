@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fragment_character_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/character_image_desc"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_line_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fragment_character_line_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <TextView
+        android:id="@+id/fragment_character_gender_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_origin_header"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_gender_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_image" />
+
+    <TextView
+        android:id="@+id/fragment_character_gender_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_origin_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_image" />
+
+    <TextView
+        android:id="@+id/fragment_character_origin_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_location_header"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_origin_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_gender_header" />
+
+    <TextView
+        android:id="@+id/fragment_character_origin_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_location_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_gender_body" />
+
+    <TextView
+        android:id="@+id/fragment_character_location_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_type_header"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_location_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_origin_header" />
+
+    <TextView
+        android:id="@+id/fragment_character_location_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_type_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_origin_body" />
+
+    <TextView
+        android:id="@+id/fragment_character_type_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_dimension_header"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_type_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_location_header" />
+
+    <TextView
+        android:id="@+id/fragment_character_type_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_dimension_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_location_body" />
+
+    <TextView
+        android:id="@+id/fragment_character_dimension_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_episodes_header"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_dimension_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_type_header" />
+
+    <TextView
+        android:id="@+id/fragment_character_dimension_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_episodes_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_type_body" />
+
+    <TextView
+        android:id="@+id/fragment_character_episodes_header"
+        style="@style/character_fragment_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_character_episodes_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_dimension_header" />
+
+    <TextView
+        android:id="@+id/fragment_character_episodes_body"
+        style="@style/character_fragment_body"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_colums_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_dimension_body" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fragment_character_colums_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
