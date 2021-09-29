@@ -1,5 +1,6 @@
 package com.example.rickmorty.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -39,11 +40,12 @@ class FragmentCharacter : MvpAppCompatFragment(R.layout.fragment_character), Fra
         presenter.loadLocation()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun displayInfo(character: Character, location: LocationResponse) {
         Glide.with(this).load(character.image).fitCenter().into(binding.fragmentCharacterImage)
         binding.fragmentCharacterName.text = character.name
         setStatusColor(character)
-        binding.fragmentCharacterStatus.text = character.status
+        binding.fragmentCharacterStatus.text = "${character.status} - ${character.species}"
         binding.fragmentCharacterGenderBody.text = character.gender
         binding.fragmentCharacterOriginBody.text = character.origin.name
         binding.fragmentCharacterLocationBody.text = location.name
