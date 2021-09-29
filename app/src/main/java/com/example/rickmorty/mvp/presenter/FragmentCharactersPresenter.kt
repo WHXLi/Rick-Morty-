@@ -3,6 +3,7 @@ package com.example.rickmorty.mvp.presenter
 import com.example.rickmorty.framework.entity.Character
 import com.example.rickmorty.framework.entity.Info
 import com.example.rickmorty.framework.repository.RickAndMortyApi
+import com.example.rickmorty.mvp.navigation.IScreens
 import com.example.rickmorty.mvp.presenter.rv.ICharactersPresenter
 import com.example.rickmorty.mvp.view.FragmentCharactersView
 import com.example.rickmorty.mvp.view.rv.ICharactersView
@@ -14,6 +15,7 @@ import javax.inject.Inject
 class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
     class CharactersPresenter : ICharactersPresenter {
         var info: Info? = null
+        var currentPosition: Int = 0
         val characters = mutableListOf<Character>()
         override var itemClickListener: ((ICharactersView) -> Unit)? = null
 
@@ -32,6 +34,9 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
     lateinit var router: Router
 
     @Inject
+    lateinit var screens: IScreens
+
+    @Inject
     lateinit var uiScheduler: Scheduler
 
     val charactersPresenter = CharactersPresenter()
@@ -41,13 +46,14 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
         viewState.initRv()
         viewState.loadCharacters()
         charactersPresenter.itemClickListener = {
-            // Переход на экран персонажа
+            router.navigateTo(screens.characterInfoScreen(charactersPresenter.characters[it.pos]))
+            charactersPresenter.currentPosition = it.pos
         }
     }
 
-    fun loadData() {
+    fun loadData(page: String?) {
         viewState.showLoadingProgress()
-        api.getCharacters()
+        api.getCharacters(page)
             .observeOn(uiScheduler)
             .subscribeOn(Schedulers.io())
             .subscribe({ call ->
@@ -60,5 +66,24 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
             }).disposeOnDestroy()
     }
 
+    fun loadData() {
+        viewState.showLoadingProgress()
+        api.getCharacters(null)
+            .observeOn(uiScheduler)
+            .subscribeOn(Schedulers.io())
+            .subscribe({ call ->
+                charactersPresenter.info = call.info
+                charactersPresenter.characters.addAll(call.results)
+                viewState.updateRv()
+                viewState.hideLoadingProgress()
+            }, {
+                it.printStackTrace()
+            }).disposeOnDestroy()
+    }
+
+    fun backClick(): Boolean {
+        router.exit()
+        return true
+    }
 
 }

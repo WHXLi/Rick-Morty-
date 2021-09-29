@@ -21,4 +21,8 @@ class ActivityMainPresenter: MvpPresenter<ActivityMainView>() {
     fun displayFragmentCharacters(){
         router.replaceScreen(screens.charactersListScreen())
     }
+
+    fun backClick(){
+        router.exit()
+    }
 }

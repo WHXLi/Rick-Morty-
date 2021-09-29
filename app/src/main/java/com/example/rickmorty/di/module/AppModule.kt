@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Scheduler
 @Module
 class AppModule(private val app: App) {
     @Provides
-    fun app() = App()
+    fun app(): App = app
 
     @Provides
     fun uiScheduler(): Scheduler = AndroidSchedulers.mainThread()

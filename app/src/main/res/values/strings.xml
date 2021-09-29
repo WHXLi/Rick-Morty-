@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Rick&amp;Morty</string>
+
     <string name="character_image_desc">Character photo</string>
+
     <string name="item_characters_header_location_text">Last known location:</string>
     <string name="item_characters_header_episode_text">First seen in:</string>
+
+    <string name="status_circle_desc">status</string>
+
+    <string name="fragment_character_gender_header">Gender:</string>
+    <string name="fragment_character_origin_header">Origin:</string>
+    <string name="fragment_character_location_header">Location:</string>
+    <string name="fragment_character_type_header">Type:</string>
+    <string name="fragment_character_dimension_header">Dimension:</string>
+    <string name="fragment_character_episodes_header">Episodes:</string>
+    <string name="fragment_character_btn_back_desc">back</string>
 </resources>
