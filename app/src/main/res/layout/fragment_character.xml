@@ -64,12 +64,12 @@
         android:id="@+id/fragment_character_status_circle"
         android:layout_width="5dp"
         android:layout_height="5dp"
+        android:contentDescription="@string/status_circle_desc"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_character_status"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_status"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_character_status"
-        android:contentDescription="@string/status_circle_desc" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_status" />
 
     <TextView
         android:id="@+id/fragment_character_status"
