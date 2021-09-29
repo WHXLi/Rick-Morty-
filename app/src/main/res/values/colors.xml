@@ -7,11 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="app_background">#21202A</color>
+
+    <color name="alive_circle">#00FF0A</color>
+    <color name="dead_circle">#FF0000</color>
 
     <color name="item_characters_block">#3C4145</color>
-    <color name="item_characters_background">#21202A</color>
     <color name="item_characters_header">#7E7F88</color>
     <color name="item_characters_text">#FFFFFF</color>
+    <color name="item_characters_back_btn">#7E7F88</color>
 
     <color name="fragment_character_header">#7E7F88</color>
     <color name="fragment_character_body">#FFFFFF</color>

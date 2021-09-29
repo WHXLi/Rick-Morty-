@@ -1,10 +1,12 @@
 package com.example.rickmorty.ui.rv_adapter
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.rickmorty.R
 import com.example.rickmorty.databinding.ItemCharactersBinding
 import com.example.rickmorty.framework.entity.Character
 import com.example.rickmorty.mvp.presenter.FragmentCharactersPresenter.CharactersPresenter
@@ -16,15 +18,23 @@ class CharactersAdapter(private val presenter: CharactersPresenter) :
         RecyclerView.ViewHolder(binding.root), ICharactersView {
         @SuppressLint("SetTextI18n")
         override fun setCharacter(character: Character) {
-            Glide.with(itemView).load(character.image).optionalFitCenter().into(binding.itemCharactersImage)
+            Glide.with(itemView).load(character.image).optionalFitCenter()
+                .into(binding.itemCharactersImage)
             binding.itemCharactersTitle.text = character.name
+            setStatusColor(character)
             binding.itemCharactersStatus.text = "${character.status} - ${character.species}"
             binding.itemCharactersBodyLocation.text = character.location.name
             binding.itemCharactersBodyOrigin.text = character.origin.name
         }
 
-
         override var pos = -1
+
+        private fun setStatusColor(character: Character) {
+            if (character.status == "Alive") Glide.with(itemView).load(R.drawable.alive_icon)
+                .into(binding.itemCharactersStatusCircle)
+            else Glide.with(itemView).load(R.drawable.dead_icon)
+                .into(binding.itemCharactersStatusCircle)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

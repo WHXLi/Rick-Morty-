@@ -2,6 +2,7 @@ package com.example.rickmorty.ui.activity
 
 import android.os.Bundle
 import com.example.rickmorty.App
+import com.example.rickmorty.ui.BackBtnClickListener
 import com.example.rickmorty.R
 import com.example.rickmorty.mvp.presenter.ActivityMainPresenter
 import com.example.rickmorty.mvp.view.ActivityMainView
@@ -39,6 +40,15 @@ class ActivityMain : MvpAppCompatActivity(R.layout.activity_main), ActivityMainV
 
     override fun showFragmentCharacters() {
         presenter.displayFragmentCharacters()
+    }
+
+    override fun onBackPressed() {
+        supportFragmentManager.fragments.forEach {
+            if (it is BackBtnClickListener && it.backPressed()) {
+                return
+            }
+        }
+        presenter.backClick()
     }
 
 }

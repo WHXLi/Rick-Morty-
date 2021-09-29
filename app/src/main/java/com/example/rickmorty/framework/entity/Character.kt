@@ -1,5 +1,6 @@
 package com.example.rickmorty.framework.entity
 
+import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import kotlinx.parcelize.Parcelize
@@ -17,5 +18,5 @@ data class Character(
     @Expose val image: String,
     @Expose val episode: List<String>,
     @Expose val url: String,
-    @Expose val created: String
+    @Expose val created: String,
 ) : Parcelable
