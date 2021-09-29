@@ -54,7 +54,7 @@
                 android:id="@+id/item_characters_status"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/characters_item_text_padding"
+                android:paddingStart="30dp"
                 android:paddingEnd="@dimen/characters_item_text_padding"
                 android:textColor="@color/item_characters_text"
                 android:textSize="@dimen/characters_item_status_text_size"
@@ -68,10 +68,12 @@
                 android:layout_width="5dp"
                 android:layout_height="5dp"
                 android:layout_marginStart="10dp"
+                android:contentDescription="@string/status_circle_desc"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_status"
+                app:layout_constraintEnd_toEndOf="@+id/item_characters_status"
+                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
-                app:layout_constraintTop_toBottomOf="@+id/item_characters_status"
-                android:contentDescription="@string/status_circle_desc" />
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_status" />
 
             <TextView
                 android:id="@+id/item_characters_header_location"
