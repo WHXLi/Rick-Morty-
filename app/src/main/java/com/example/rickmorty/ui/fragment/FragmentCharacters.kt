@@ -18,7 +18,7 @@ class FragmentCharacters : MvpAppCompatFragment(R.layout.fragment_characters),
     FragmentCharactersView, BackBtnClickListener {
     private val binding: FragmentCharactersBinding by viewBinding()
     private lateinit var adapter: CharactersAdapter
-    private lateinit var layoutManager: LinearLayoutManager
+    private var layoutManager: LinearLayoutManager? = null
     private lateinit var dialog: Dialog
     private val presenter by moxyPresenter {
         FragmentCharactersPresenter().apply {
@@ -32,7 +32,8 @@ class FragmentCharacters : MvpAppCompatFragment(R.layout.fragment_characters),
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.charactersPresenter.currentPosition = layoutManager.findFirstVisibleItemPosition()
+        if (layoutManager != null) presenter.charactersPresenter.currentPosition =
+            layoutManager!!.findFirstVisibleItemPosition()
     }
 
     override fun loadCharacters() {

@@ -88,7 +88,6 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
     fun characterClick(){
         charactersPresenter.itemClickListener = {
             router.navigateTo(screens.characterInfoScreen(charactersPresenter.characters[it.pos]))
-            charactersPresenter.currentPosition = it.pos
         }
     }
 
