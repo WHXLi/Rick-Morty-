@@ -1,14 +1,13 @@
-package com.example.rickmorty.ui.rv_adapter
+package com.example.rickmorty.mvp.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rickmorty.R
 import com.example.rickmorty.databinding.ItemCharactersBinding
-import com.example.rickmorty.framework.entity.Character
+import com.example.rickmorty.mvp.model.Character
 import com.example.rickmorty.mvp.presenter.FragmentCharactersPresenter.CharactersPresenter
 import com.example.rickmorty.mvp.view.rv.ICharactersView
 
@@ -49,6 +48,11 @@ class CharactersAdapter(private val presenter: CharactersPresenter) :
         }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (position == presenter.lastPosition) {
+            presenter.startPosition = presenter.lastPosition
+            presenter.loadData(presenter.info?.next?.substringAfterLast("="))
+            presenter.lastPosition = presenter.characters.lastIndex
+        }
         presenter.bindView(holder.apply { pos = position })
     }
 

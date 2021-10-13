@@ -1,4 +1,4 @@
-package com.example.rickmorty.framework.entity
+package com.example.rickmorty.mvp.model
 
 import com.google.gson.annotations.Expose
 

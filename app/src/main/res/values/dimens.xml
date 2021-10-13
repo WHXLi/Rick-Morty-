@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
-    <dimen name="characters_item_layout_margin">20dp</dimen>
-    <dimen name="characters_item_height">200dp</dimen>
-    <dimen name="characters_item_text_margin_top">12dp</dimen>
-    <dimen name="characters_item_text_padding">20dp</dimen>
-    <dimen name="characters_item_title_text_size">22sp</dimen>
-    <dimen name="characters_item_status_text_size">14sp</dimen>
-    <dimen name="characters_item_header_text_size">16sp</dimen>
-    <dimen name="characters_item_body_text_size">18sp</dimen>
-    <dimen name="characters_item_status_circle">8dp</dimen>
 
-    <dimen name="character_fragment_text_padding">20dp</dimen>
-    <dimen name="character_fragment_name_size">24sp</dimen>
-    <dimen name="character_fragment_name_margin">20dp</dimen>
-    <dimen name="character_fragment_status_margin">35dp</dimen>
-    <dimen name="character_fragment_text_size">16sp</dimen>
+    <dimen name="text_indent">20dp</dimen>
+
+    <dimen name="item_characters_unit_margin">20dp</dimen>
+    <dimen name="item_characters_layout_height">200dp</dimen>
+
+    <dimen name="character_header_text_size">16sp</dimen>
+    <dimen name="character_body_text_size">18sp</dimen>
+    <dimen name="character_name_text_size">22sp</dimen>
+    <dimen name="character_status_circle_size">5dp</dimen>
+    <dimen name="character_status_text_size">14sp</dimen>
+    <dimen name="character_status_text_padding">12dp</dimen>
+
 </resources>

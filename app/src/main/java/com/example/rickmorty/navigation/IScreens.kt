@@ -1,6 +1,6 @@
-package com.example.rickmorty.mvp.navigation
+package com.example.rickmorty.navigation
 
-import com.example.rickmorty.framework.entity.Character
+import com.example.rickmorty.mvp.model.Character
 import com.github.terrakok.cicerone.Screen
 
 interface IScreens {

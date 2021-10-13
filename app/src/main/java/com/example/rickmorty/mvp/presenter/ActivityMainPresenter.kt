@@ -1,6 +1,6 @@
 package com.example.rickmorty.mvp.presenter
 
-import com.example.rickmorty.mvp.navigation.IScreens
+import com.example.rickmorty.navigation.IScreens
 import com.example.rickmorty.mvp.view.ActivityMainView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter

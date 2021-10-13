@@ -1,7 +1,7 @@
 package com.example.rickmorty.di.module
 
-import com.example.rickmorty.mvp.navigation.IScreens
-import com.example.rickmorty.ui.navigation.AndroidScreens
+import com.example.rickmorty.navigation.IScreens
+import com.example.rickmorty.navigation.AndroidScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router

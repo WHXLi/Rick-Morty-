@@ -1,9 +1,9 @@
 package com.example.rickmorty.mvp.presenter
 
-import com.example.rickmorty.framework.entity.Character
-import com.example.rickmorty.framework.repository.LocationResponse
-import com.example.rickmorty.framework.repository.RickAndMortyApi
-import com.example.rickmorty.mvp.navigation.IScreens
+import com.example.rickmorty.mvp.model.Character
+import com.example.rickmorty.network.LocationResponse
+import com.example.rickmorty.network.RickAndMortyApi
+import com.example.rickmorty.navigation.IScreens
 import com.example.rickmorty.mvp.view.FragmentCharacterView
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.core.Scheduler

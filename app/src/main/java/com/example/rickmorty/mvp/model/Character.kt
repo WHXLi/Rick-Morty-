@@ -1,6 +1,5 @@
-package com.example.rickmorty.framework.entity
+package com.example.rickmorty.mvp.model
 
-import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import kotlinx.parcelize.Parcelize

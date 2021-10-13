@@ -1,4 +1,4 @@
-package com.example.rickmorty.framework.repository
+package com.example.rickmorty.network
 
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET

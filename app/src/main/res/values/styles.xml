@@ -5,26 +5,31 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
-    
-    <style name="character_fragment_text">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+
+    <style name="character_status_circle">
+        <item name="android:layout_width">@dimen/character_status_circle_size</item>
+        <item name="android:layout_height">@dimen/character_status_circle_size</item>
     </style>
-    
-    <style name="character_fragment_header" parent="character_fragment_text">
-        <item name="android:paddingStart">@dimen/character_fragment_text_padding</item>
-        <item name="android:paddingEnd">@dimen/character_fragment_text_padding</item>
+
+    <style name="character_status_text">
+        <item name="android:paddingStart">@dimen/character_status_text_padding</item>
+        <item name="android:paddingEnd">@dimen/character_status_text_padding</item>
+        <item name="android:textSize">@dimen/character_status_text_size</item>
+        <item name="android:textColor">@color/character_main_text</item>
+    </style>
+
+    <style name="character_header_text">
+        <item name="android:textSize">@dimen/character_header_text_size</item>
+        <item name="android:textColor">@color/character_header_text</item>
         <item name="android:gravity">start</item>
-        <item name="android:textSize">@dimen/character_fragment_text_size</item>
-        <item name="android:textColor">@color/fragment_character_header</item>
+        <item name="android:layout_marginStart">@dimen/text_indent</item>
     </style>
-    
-    <style name="character_fragment_body" parent="character_fragment_text">
-        <item name="android:paddingStart">@dimen/character_fragment_text_padding</item>
-        <item name="android:paddingEnd">@dimen/character_fragment_text_padding</item>
+
+    <style name="character_body_text">
+        <item name="android:textSize">@dimen/character_body_text_size</item>
+        <item name="android:textColor">@color/character_main_text</item>
         <item name="android:gravity">end</item>
-        <item name="android:textSize">@dimen/character_fragment_text_size</item>
-        <item name="android:textColor">@color/fragment_character_body</item>
+        <item name="android:layout_marginEnd">@dimen/text_indent</item>
     </style>
 
     <style name="circle_button_back">

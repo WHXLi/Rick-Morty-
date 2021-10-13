@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:backgroundTint="@color/item_characters_back_btn"
+        android:backgroundTint="@color/character_back_btn"
         android:contentDescription="@string/fragment_character_btn_back_desc"
         android:focusable="true"
         android:src="@drawable/ic_baseline_arrow_white_24"
@@ -23,7 +23,7 @@
         android:id="@+id/fragment_character_image_frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_line_image"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_image_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,16 +33,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/character_image_desc"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
+            tools:ignore="ImageContrastCheck"
             tools:srcCompat="@tools:sample/avatars" />
-        <View
+
+        <ImageView
+            android:id="@+id/fragment_character_image_gradient"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_character_image"/>
+            android:background="@drawable/gradient_character_image"
+            android:contentDescription="@string/character_image_desc"
+            android:scaleType="fitCenter" />
     </FrameLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/fragment_character_line_image"
+        android:id="@+id/fragment_character_image_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -50,145 +55,191 @@
 
     <TextView
         android:id="@+id/fragment_character_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/character_fragment_name_margin"
-        android:textColor="@color/white"
-        android:textSize="@dimen/character_fragment_name_size"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_line_image"
+        android:paddingStart="@dimen/text_indent"
+        android:paddingEnd="@dimen/text_indent"
+        android:textColor="@color/character_main_text"
+        android:textSize="@dimen/character_name_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_status"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="Character name" />
 
     <ImageView
         android:id="@+id/fragment_character_status_circle"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
+        style="@style/character_status_circle"
         android:contentDescription="@string/status_circle_desc"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_character_status"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_character_status"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_character_status" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragment_character_status"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_status"
+        tools:ignore="ImageContrastCheck"
+        tools:src="@drawable/alive_icon" />
 
     <TextView
         android:id="@+id/fragment_character_status"
-        android:layout_width="wrap_content"
+        style="@style/character_status_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/character_fragment_status_margin"
-        android:textColor="@color/white"
-        android:textSize="@dimen/character_fragment_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_line_image"
+        android:layout_marginStart="@dimen/text_indent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_character_image_line"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_name" />
+        tools:text="Character status" />
 
     <TextView
         android:id="@+id/fragment_character_gender_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_gender_header"
         app:layout_constraintBottom_toTopOf="@+id/fragment_character_origin_header"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_gender_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_image_frame" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_image_frame"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_gender_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_origin_body"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_gender_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_image_frame" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_gender_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_gender_header"
+        tools:text="info" />
 
     <TextView
         android:id="@+id/fragment_character_origin_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_origin_header"
         app:layout_constraintBottom_toTopOf="@+id/fragment_character_location_header"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_origin_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_gender_header" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_gender_header"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_origin_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_location_body"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_origin_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_gender_body" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_origin_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_origin_header"
+        tools:text="info" />
 
     <TextView
         android:id="@+id/fragment_character_location_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_location_header"
         app:layout_constraintBottom_toTopOf="@+id/fragment_character_type_header"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_location_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_origin_header" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_origin_header"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_location_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_type_body"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_location_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_origin_body" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_location_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_location_header"
+        tools:text="info" />
 
     <TextView
         android:id="@+id/fragment_character_type_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_type_header"
         app:layout_constraintBottom_toTopOf="@+id/fragment_character_dimension_header"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_type_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_location_header" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_location_header"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_type_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_dimension_body"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_type_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_location_body" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_type_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_type_header"
+        tools:text="info" />
 
     <TextView
         android:id="@+id/fragment_character_dimension_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_dimension_header"
         app:layout_constraintBottom_toTopOf="@+id/fragment_character_episodes_header"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_dimension_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_type_header" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_type_header"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_dimension_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_character_episodes_body"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_dimension_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_type_body" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_dimension_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_dimension_header"
+        tools:text="info" />
 
     <TextView
         android:id="@+id/fragment_character_episodes_header"
-        style="@style/character_fragment_header"
+        style="@style/character_header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/fragment_character_episodes_header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fragment_character_episodes_body"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_dimension_header" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_character_dimension_header"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/fragment_character_episodes_body"
-        style="@style/character_fragment_body"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fragment_character_columns_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_character_dimension_body" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/fragment_character_columns_line"
-        android:layout_width="wrap_content"
+        style="@style/character_body_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_character_episodes_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_character_episodes_header"
+        app:layout_constraintTop_toTopOf="@+id/fragment_character_episodes_header"
+        tools:text="info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
