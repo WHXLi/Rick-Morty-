@@ -39,6 +39,7 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
 
         override fun bindView(view: ICharactersView) {
             val character = characters[view.pos]
+            currentPosition = view.pos
             view.setCharacter(character)
         }
 
@@ -90,7 +91,6 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
             charactersPresenter.currentPosition = it.pos
         }
     }
-
 
     fun backClick(): Boolean {
         router.exit()
