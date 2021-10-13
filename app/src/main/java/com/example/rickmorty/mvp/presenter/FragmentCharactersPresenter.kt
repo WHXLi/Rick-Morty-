@@ -34,12 +34,10 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
         var currentPosition: Int = 0
         var lastPosition: Int = 0
         val characters = mutableListOf<Character>()
-        override var
-                itemClickListener: ((ICharactersView) -> Unit)? = null
+        override var itemClickListener: ((ICharactersView) -> Unit)? = null
 
         override fun bindView(view: ICharactersView) {
             val character = characters[view.pos]
-            currentPosition = view.pos
             view.setCharacter(character)
         }
 
@@ -88,6 +86,7 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
     fun characterClick(){
         charactersPresenter.itemClickListener = {
             router.navigateTo(screens.characterInfoScreen(charactersPresenter.characters[it.pos]))
+            charactersPresenter.currentPosition = it.pos
         }
     }
 
