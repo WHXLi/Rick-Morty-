@@ -1,4 +1,4 @@
-package com.example.rickmorty.framework.repository
+package com.example.rickmorty.network
 
 import com.google.gson.annotations.Expose
 

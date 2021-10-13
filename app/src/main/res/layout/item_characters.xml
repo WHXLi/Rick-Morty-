@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/characters_item_height"
-    android:layout_margin="@dimen/characters_item_layout_margin">
+    android:layout_height="@dimen/item_characters_layout_height"
+    android:layout_margin="@dimen/item_characters_unit_margin">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/item_characters_block"
+        android:backgroundTint="@color/item_character_card_background"
         app:cardCornerRadius="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,51 +39,50 @@
                 android:id="@+id/item_characters_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="@dimen/characters_item_text_padding"
-                android:paddingEnd="@dimen/characters_item_text_padding"
-                android:textColor="@color/item_characters_text"
-                android:textSize="@dimen/characters_item_title_text_size"
+                android:layout_marginTop="8dp"
+                android:paddingStart="@dimen/text_indent"
+                android:paddingEnd="@dimen/text_indent"
+                android:textColor="@color/character_main_text"
+                android:textSize="@dimen/character_name_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_status"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Character name" />
 
             <TextView
                 android:id="@+id/item_characters_status"
+                style="@style/character_status_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="30dp"
-                android:paddingEnd="@dimen/characters_item_text_padding"
-                android:textColor="@color/item_characters_text"
-                android:textSize="@dimen/characters_item_status_text_size"
+                android:layout_marginStart="@dimen/text_indent"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_header_location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
-                app:layout_constraintTop_toBottomOf="@+id/item_characters_title" />
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_title"
+                tools:text="Character status" />
 
             <ImageView
                 android:id="@+id/item_characters_status_circle"
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_marginStart="10dp"
+                style="@style/character_status_circle"
                 android:contentDescription="@string/status_circle_desc"
-                app:layout_constraintBottom_toTopOf="@+id/item_characters_status"
+                app:layout_constraintBottom_toTopOf="@+id/item_characters_header_location"
                 app:layout_constraintEnd_toEndOf="@+id/item_characters_status"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toStartOf="@+id/item_characters_line"
-                app:layout_constraintTop_toBottomOf="@+id/item_characters_status" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/item_characters_status"
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_title"
+                tools:src="@drawable/alive_icon"/>
 
             <TextView
                 android:id="@+id/item_characters_header_location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/characters_item_text_padding"
-                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:paddingStart="@dimen/text_indent"
+                android:paddingEnd="@dimen/text_indent"
                 android:text="@string/item_characters_header_location_text"
-                android:textColor="@color/item_characters_header"
-                android:textSize="@dimen/characters_item_header_text_size"
+                android:textColor="@color/character_header_text"
+                android:textSize="@dimen/character_header_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_body_location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
@@ -93,24 +92,25 @@
                 android:id="@+id/item_characters_body_location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/characters_item_text_padding"
-                android:paddingEnd="@dimen/characters_item_text_padding"
-                android:textColor="@color/item_characters_text"
-                android:textSize="@dimen/characters_item_body_text_size"
+                android:paddingStart="@dimen/text_indent"
+                android:paddingEnd="@dimen/text_indent"
+                android:textColor="@color/character_main_text"
+                android:textSize="@dimen/character_body_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_header_origin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
-                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_location" />
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_location"
+                tools:text="Character location" />
 
             <TextView
                 android:id="@+id/item_characters_header_origin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/characters_item_text_padding"
-                android:paddingEnd="@dimen/characters_item_text_padding"
+                android:paddingStart="@dimen/text_indent"
+                android:paddingEnd="@dimen/text_indent"
                 android:text="@string/item_characters_header_episode_text"
-                android:textColor="@color/item_characters_header"
-                android:textSize="@dimen/characters_item_header_text_size"
+                android:textColor="@color/character_header_text"
+                android:textSize="@dimen/character_header_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/item_characters_body_origin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
@@ -120,15 +120,16 @@
                 android:id="@+id/item_characters_body_origin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:paddingStart="@dimen/characters_item_text_padding"
-                android:paddingEnd="@dimen/characters_item_text_padding"
-                android:textColor="@color/item_characters_text"
-                android:textSize="@dimen/characters_item_body_text_size"
+                android:layout_marginBottom="8dp"
+                android:paddingStart="@dimen/text_indent"
+                android:paddingEnd="@dimen/text_indent"
+                android:textColor="@color/character_main_text"
+                android:textSize="@dimen/character_body_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/item_characters_line"
-                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_origin" />
+                app:layout_constraintTop_toBottomOf="@+id/item_characters_header_origin"
+                tools:text="Character origin" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

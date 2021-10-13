@@ -10,6 +10,7 @@ interface FragmentCharactersView: MvpView {
     fun loadCharacters()
     fun initRv()
     fun updateRv()
+    fun setItemClickListener()
     fun showLoadingProgress()
     fun hideLoadingProgress()
 }

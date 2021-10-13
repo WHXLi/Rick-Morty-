@@ -1,9 +1,9 @@
 package com.example.rickmorty.mvp.presenter
 
-import com.example.rickmorty.framework.entity.Character
-import com.example.rickmorty.framework.entity.Info
-import com.example.rickmorty.framework.repository.RickAndMortyApi
-import com.example.rickmorty.mvp.navigation.IScreens
+import com.example.rickmorty.mvp.model.Character
+import com.example.rickmorty.mvp.model.Info
+import com.example.rickmorty.network.RickAndMortyApi
+import com.example.rickmorty.navigation.IScreens
 import com.example.rickmorty.mvp.presenter.rv.ICharactersPresenter
 import com.example.rickmorty.mvp.view.FragmentCharactersView
 import com.example.rickmorty.mvp.view.rv.ICharactersView
@@ -13,19 +13,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
-    class CharactersPresenter : ICharactersPresenter {
-        var info: Info? = null
-        var currentPosition: Int = 0
-        val characters = mutableListOf<Character>()
-        override var itemClickListener: ((ICharactersView) -> Unit)? = null
-
-        override fun bindView(view: ICharactersView) {
-            val character = characters[view.pos]
-            view.setCharacter(character)
-        }
-
-        override fun getCount(): Int = characters.size
-    }
 
     @Inject
     lateinit var api: RickAndMortyApi
@@ -41,45 +28,69 @@ class FragmentCharactersPresenter : BaseMvpPresenter<FragmentCharactersView>() {
 
     val charactersPresenter = CharactersPresenter()
 
+    inner class CharactersPresenter : ICharactersPresenter {
+        var info: Info? = null
+        var startPosition: Int = 0
+        var currentPosition: Int = 0
+        var lastPosition: Int = 0
+        val characters = mutableListOf<Character>()
+        override var
+                itemClickListener: ((ICharactersView) -> Unit)? = null
+
+        override fun bindView(view: ICharactersView) {
+            val character = characters[view.pos]
+            view.setCharacter(character)
+        }
+
+        override fun getCount(): Int = characters.size
+
+        fun loadData(page: String?) {
+            viewState.showLoadingProgress()
+            api.getCharacters(page)
+                .observeOn(uiScheduler)
+                .subscribeOn(Schedulers.io())
+                .subscribe({ call ->
+                    info = call.info
+                    characters.addAll(call.results)
+                    lastPosition = characters.lastIndex
+                    viewState.updateRv()
+                    viewState.hideLoadingProgress()
+                }, {
+                    it.printStackTrace()
+                }).disposeOnDestroy()
+        }
+
+        fun loadData() {
+            viewState.showLoadingProgress()
+            api.getCharacters(null)
+                .observeOn(uiScheduler)
+                .subscribeOn(Schedulers.io())
+                .subscribe({ call ->
+                    info = call.info
+                    characters.addAll(call.results)
+                    lastPosition = characters.lastIndex
+                    viewState.updateRv()
+                    viewState.hideLoadingProgress()
+                }, {
+                    it.printStackTrace()
+                })
+        }
+    }
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.initRv()
         viewState.loadCharacters()
+        viewState.setItemClickListener()
+    }
+
+    fun characterClick(){
         charactersPresenter.itemClickListener = {
             router.navigateTo(screens.characterInfoScreen(charactersPresenter.characters[it.pos]))
             charactersPresenter.currentPosition = it.pos
         }
     }
 
-    fun loadData(page: String?) {
-        viewState.showLoadingProgress()
-        api.getCharacters(page)
-            .observeOn(uiScheduler)
-            .subscribeOn(Schedulers.io())
-            .subscribe({ call ->
-                charactersPresenter.info = call.info
-                charactersPresenter.characters.addAll(call.results)
-                viewState.updateRv()
-                viewState.hideLoadingProgress()
-            }, {
-                it.printStackTrace()
-            }).disposeOnDestroy()
-    }
-
-    fun loadData() {
-        viewState.showLoadingProgress()
-        api.getCharacters(null)
-            .observeOn(uiScheduler)
-            .subscribeOn(Schedulers.io())
-            .subscribe({ call ->
-                charactersPresenter.info = call.info
-                charactersPresenter.characters.addAll(call.results)
-                viewState.updateRv()
-                viewState.hideLoadingProgress()
-            }, {
-                it.printStackTrace()
-            }).disposeOnDestroy()
-    }
 
     fun backClick(): Boolean {
         router.exit()

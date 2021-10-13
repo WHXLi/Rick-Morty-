@@ -9,8 +9,8 @@ import com.example.rickmorty.App
 import com.example.rickmorty.ui.BackBtnClickListener
 import com.example.rickmorty.R
 import com.example.rickmorty.databinding.FragmentCharacterBinding
-import com.example.rickmorty.framework.entity.Character
-import com.example.rickmorty.framework.repository.LocationResponse
+import com.example.rickmorty.mvp.model.Character
+import com.example.rickmorty.network.LocationResponse
 import com.example.rickmorty.mvp.presenter.FragmentCharacterPresenter
 import com.example.rickmorty.mvp.view.FragmentCharacterView
 import moxy.MvpAppCompatFragment

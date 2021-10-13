@@ -1,6 +1,6 @@
 package com.example.rickmorty.di.module
 
-import com.example.rickmorty.framework.repository.RickAndMortyApi
+import com.example.rickmorty.network.RickAndMortyApi
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -9,7 +9,6 @@ import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
